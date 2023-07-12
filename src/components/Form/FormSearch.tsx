@@ -1,6 +1,7 @@
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { usePagination } from "@/hooks/usePagination";
 
 interface IForm {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -8,6 +9,12 @@ interface IForm {
 }
 
 const FormSearch = ({ handleSubmit, isLoading }: IForm) => {
+  const { resetPage } = usePagination();
+  const handleSubmitClick = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit(e);
+    resetPage();
+  };
+
   return (
     <>
       <Box
@@ -17,7 +24,7 @@ const FormSearch = ({ handleSubmit, isLoading }: IForm) => {
         }}
         noValidate
         autoComplete="off"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmitClick}
       >
         <TextField
           sx={{

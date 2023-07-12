@@ -27,7 +27,7 @@ const ListResult = ({ query }: IListResults) => {
   const { currentPage, handlePageChange } = usePagination();
   const { data, status, error } = useQuery<SearchUsersResponse, Error>({
     queryKey: [query, currentPage],
-    queryFn: () => searchUsersByQuery(query, currentPage),
+    queryFn: () => searchUsersByQuery(query.toLowerCase(), currentPage),
   });
 
   const result = data?.data.items;

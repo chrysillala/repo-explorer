@@ -13,6 +13,7 @@ declare global {
   type PaginationHook = {
     currentPage: number;
     handlePageChange: (...args: any[]) => void;
+    resetPage: () => void;
   };
 
   type SearchUsersResponse = Endpoints["GET /search/users"]["response"];
